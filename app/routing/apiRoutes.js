@@ -1,4 +1,4 @@
-var characters = require("../data/friends.js");
+var characters = require("../data/friend.js");
 
 
 
