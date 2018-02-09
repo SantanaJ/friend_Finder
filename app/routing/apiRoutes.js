@@ -7,42 +7,27 @@ module.exports = function (app) {
   app.get("/character/:character", function (req, res) {
     switch(req.params.character){
        case "eleven":
-            res.json(characters.eleven);
+            res.json(characters[0]);
              break;
         case "mike":
-             res.json(characters.mike);
+             res.json(characters[1]);
               break;   
         case "dustin":
-              res.json(characters.dustin);
+              res.json(characters[2]);
                break;
         case "lucas":
-               res.json(characters.lucas);
+               res.json(characters[3]);
                 break;
         case "will":
-                res.json(characters.will);
+                res.json(characters[4]);
                  break;
     }
 });
 
 app.post("/new", function (req,res){
-    switch(req.body.user_match){
-        case "eleven":
-            characters.eleven.push(req.body.name);
-            break;
-        case "mike":
-            characters.mike.push(req.body.name);
-            break;
-        case "dustin":
-            characters.dustin.push(req.body.name);
-            break;
-        case "lucas":
-            characters.lucas.push(req.body.name);
-            break;
-        case "will":
-            characters.will.push(req.body.name);
-            break;
 
-    }
+    characters.push(req.body.name);
+    res.json(req.body.user_match);
 });
 
 }

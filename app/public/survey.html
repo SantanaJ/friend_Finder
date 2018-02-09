@@ -218,7 +218,7 @@
         };
 
         for (var i = 0; i < 10; i++) {
-            userInput.answers.push(parseInt($("#sel" + (i + 1)).val()));
+            userInput.answers.push(parseInt($("#q" + (i + 1)).val()));
         }
 
 
@@ -226,6 +226,8 @@
         $.post("/new", {
             user_match,
             name: userInput.name
+        },function(data){
+            console.log(data);
         });
 
         var modal_result = {
@@ -254,7 +256,7 @@
         $("#modal-title").html('<strong> Your Match is ${userInput.name}!</strong>');
         $("#modal-content").empty();
         $("#modal-content").append(
-            `<img src='${modal_content[user_match].photo}' alt='${modal_content[user_match].alt}'>`
+            `<img src='${modal_result[user_match].photo}' alt='${modal_result[user_match].alt}'>`
         );
 
         $("#results-modal").modal("toggle");
@@ -279,7 +281,7 @@
                 }
 
                 if (score < minimum_score) {
-                    low_score = score;
+                    minimum_score = score;
                     char_match = character;
                 }
             }
